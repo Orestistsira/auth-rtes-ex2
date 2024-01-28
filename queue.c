@@ -3,21 +3,21 @@
 Queue *queueInit(int size) {
     Queue *q;
 
-    q = (Queue *) malloc (sizeof(Queue));
-    if (q == NULL) return NULL;
+    q = (Queue *)malloc(sizeof(Queue));
+    if (q == NULL)
+        return NULL;
 
-    q->buf = (WorkFunction *) malloc (q->size * sizeof(WorkFunction));
     q->size = size;
-    q->head = 0;
-    q->tail = 0;
+    q->buf = (WorkFunction *)malloc(q->size * sizeof(WorkFunction));
     q->empty = 1;
     q->full = 0;
-    
-    q->mut = (pthread_mutex_t *) malloc (sizeof(pthread_mutex_t));
+    q->head = 0;
+    q->tail = 0;
+    q->mut = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
     pthread_mutex_init(q->mut, NULL);
-    q->notFull = (pthread_cond_t *) malloc (sizeof(pthread_cond_t));
+    q->notFull = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
     pthread_cond_init(q->notFull, NULL);
-    q->notEmpty = (pthread_cond_t *) malloc (sizeof(pthread_cond_t));
+    q->notEmpty = (pthread_cond_t *)malloc(sizeof(pthread_cond_t));
     pthread_cond_init(q->notEmpty, NULL);
 
     return q;
