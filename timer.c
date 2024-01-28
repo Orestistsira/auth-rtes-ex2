@@ -28,7 +28,6 @@ void startat(Timer *timer, int year, int month, int day, int hour, int minute, i
 
     time_t now = time(NULL);
 
-    // Creates a time struct of the desired time to start the timer.
     struct tm startAt;
     startAt.tm_year = year;
     startAt.tm_mon = month;
